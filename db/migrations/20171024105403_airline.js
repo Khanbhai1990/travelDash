@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string("name");
     table.string("description");
+    table.string("password");
     table.timestamps(true,true);
   })
 

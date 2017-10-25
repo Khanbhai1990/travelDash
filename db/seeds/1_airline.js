@@ -5,9 +5,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('airline').insert([
-        {name: 'SouthWest', description: "Fly West Coast"},
-        {name: 'American', description:"domestic"},
-        {name: 'Virgin International', description:"Its Internationl!!!"}
+        {name: 'SouthWest', description: "Fly West Coast", password:'test'},
+        {name: 'American', description:"domestic", password:'amer'},
+        {name: 'Virgin International', description:"Its Internationl!!!", password:'virgin'}
       ]);
     });
 };
