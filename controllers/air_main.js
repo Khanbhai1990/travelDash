@@ -35,6 +35,11 @@ module.exports = {
         console.error(err);
       });
 
+  },
+
+  logout: function (req, res){
+    req.session.airline = undefined
+    res.redirect('/airline_login');
   }
 
 }

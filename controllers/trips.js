@@ -45,6 +45,11 @@ module.exports = {
         console.error(err);
       });
 
+  },
+
+  logout: function (req, res){
+    req.session.user = undefined
+    res.redirect('/users/login');
   }
 
 

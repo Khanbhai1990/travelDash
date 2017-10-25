@@ -11,8 +11,9 @@ module.exports = {
         let airline = result[0];
         if(airline.password === req.body.password){
           req.session.airline = airline.id;
-          console.log("okay")
+          req.session.save(()=>{
           res.redirect('/air_main');
+          })
         }
       })
       .catch((err)=>{

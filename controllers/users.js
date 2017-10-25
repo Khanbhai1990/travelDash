@@ -40,10 +40,12 @@ module.exports = {
         encryption.check(user, req.body).then((isValid)=>{
           if(isValid){
             req.session.user = user.id;
+            req.session.save(()=>{
             res.redirect('/trips');
+            })
           } else{
             req.session.message = 'Sorry, no Chicago flights today';
-            res.redirect('/users/login')    
+            res.redirect('/users/login')
           }
         })
       })

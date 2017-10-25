@@ -19,11 +19,13 @@ module.exports = function(app){
     app.get("/trips", trips.index);
     app.get(`/delete/:id`, trips.del);
     app.post('/trips', trips.submit);
+    app.get(`/Userlogout`, trips.logout);
 
     app.use(airlineAuth);
 
     app.get('/air_main', air_main.index);
     app.get(`/deleteFlight/:id`, air_main.del);
+    app.get(`/logout`, air_main.logout);
     app.post('/air_main', air_main.submit);
 }
 
