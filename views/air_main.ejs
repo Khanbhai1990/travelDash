@@ -5,6 +5,37 @@
     <title></title>
   </head>
   <body>
-    airline page
+    <h3><%=airline[0].name%></h3>
+
+    <table >
+
+        <thead>
+          <tr>
+          <th>Airline</th>
+          <th>description</th>
+          <th>start</th>
+          <th>destination</th>
+        </tr>
+        </thead>
+    <tbody>
+      <%for (let i=0;i<airline.length;i++){%>
+      <tr >
+        <td><%=airline[i].name%></td>
+        <td><%=airline[i].description%></td>
+        <td><%=airline[i].start%></td>
+        <td><%=airline[i].destination%></td>
+      </tr>
+        <%}%>
+      </tbody>
+
+    </table>
+
+    <form action="/air_main" method="post">
+      <input type="text" name="start" placeholder="start">
+      <input type="text" name="destination" placeholder="destination">
+    <input type="submit">
+    </form>
+
+
   </body>
 </html>

@@ -3,8 +3,13 @@ const knex = require("../db/knex.js");
 module.exports = {
   // CHANGE ME TO AN ACTUAL FUNCTION
 
+
   login: function(req,res){
     res.render('users_login', {message: req.session.message});
+  },
+
+  index: function(req,res){
+    res.redirect('/users/login');
   },
 
   register: function(req,res){

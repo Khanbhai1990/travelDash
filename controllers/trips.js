@@ -31,7 +31,7 @@ module.exports = {
       .then((result)=>{
         res.redirect('/trips');
       })
-    res.redirect('/trips');
+    
   }
 
 
