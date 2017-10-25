@@ -13,6 +13,7 @@
           <%for (let i=0;i<flight.length;i++){%>
           <option name="flights"><%=flight[i].start%> to <%=flight[i].destination%></option>
           <hidden option name="ids"><%=flight[i].id%></option>
+
           <%}%>
         </select>
           <br><br>
@@ -36,6 +37,9 @@
           <tr >
             <td><%=trip[i].title%></td>
             <td><%=trip[i].description%></td>
+            <%console.log(trip[i].flight_id)%>
+            <td><%=trip[i].start%></td>
+            <td><%=trip[i].destination%></td>
           </tr>
             <%}%>
         </tbody>

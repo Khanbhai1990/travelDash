@@ -8,10 +8,11 @@ module.exports = {
       .then((result)=>{
         let logged_user = result[0];
         knex('trips')
+          .join('flight', 'flight.id', '=', 'trips.flight_id')
           .where('user_id', req.session.user)
           .then((info)=>{
             let trip = info
-            console.log(trip)
+            console.log(info)
             res.render('trips', {flight: data, user: logged_user, trip:trip});
           })
 
