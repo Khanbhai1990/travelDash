@@ -29,6 +29,7 @@
           <th>start</th>
           <th>end</th>
           <th>flight</th>
+          <th>delete trip</th>
 
         </tr>
         </thead>
@@ -41,6 +42,7 @@
             <td><%=trip[i].start%></td>
             <td><%=trip[i].destination%></td>
             <td><%=trip[i].name%></td>
+            <td><button type="button" name="button"><a href="/delete/<%=trip[i].id%>">Delete</a></button></td>
           </tr>
             <%}%>
         </tbody>

@@ -10,7 +10,7 @@ module.exports = {
         knex('trips')
           .join('flight', 'flight.id', '=', 'trips.flight_id')
           .join('airline', 'airline.id', '=','flight.airline_id')
-          .select('trips.title', 'trips.description', 'flight.start', 'flight.destination', 'airline.name' )
+          .select('trips.id', 'trips.title', 'trips.description', 'flight.start', 'flight.destination', 'airline.name')
           .where('user_id', req.session.user)
           .then((info)=>{
             let trip = info
@@ -31,7 +31,20 @@ module.exports = {
       .then((result)=>{
         res.redirect('/trips');
       })
-    
+
+  },
+
+  del: function(req,res){
+    knex('trips')
+      .del()
+      .where('id', req.params.id)
+      .then((result)=>{
+        res.redirect('/trips');
+      })
+      .catch((err)=>{
+        console.error(err);
+      });
+
   }
 
 

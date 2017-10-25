@@ -17,6 +17,7 @@ module.exports = function(app){
     app.use(userAuth);
 
     app.get("/trips", trips.index);
+    app.get(`/delete/:id`, trips.del)
     app.post('/trips', trips.submit);
 
     app.use(airlineAuth);
