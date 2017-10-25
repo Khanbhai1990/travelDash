@@ -15,6 +15,7 @@
           <th>description</th>
           <th>start</th>
           <th>destination</th>
+          <th>delete</th>
         </tr>
         </thead>
     <tbody>
@@ -24,6 +25,8 @@
         <td><%=airline[i].description%></td>
         <td><%=airline[i].start%></td>
         <td><%=airline[i].destination%></td>
+        <%console.log(airline[i])%>
+        <td><button type="button" name="button"><a href="/deleteFlight/<%=airline[i].id%>">Delete</a></button></td>
       </tr>
         <%}%>
       </tbody>
