@@ -9,15 +9,19 @@ module.exports = {
         let logged_user = result[0];
         knex('trips')
           .join('flight', 'flight.id', '=', 'trips.flight_id')
+          .join('airline', 'airline_id', '=','flight.airline_id')
           .where('user_id', req.session.user)
           .then((info)=>{
             let trip = info
-            console.log(info)
+
             res.render('trips', {flight: data, user: logged_user, trip:trip});
           })
 
       })
     })
+  },
+  submit: function(req,res){
+    knex()
   }
 
 

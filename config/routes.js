@@ -9,5 +9,5 @@ module.exports = function(app){
     app.post("/users/register", users.register);
 
     app.get("/trips", trips.index);
-    
+    app.post('/trips', trips.submit);
 }
