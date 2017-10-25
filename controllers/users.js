@@ -1,5 +1,5 @@
 const knex = require("../db/knex.js");
-
+const encryption = require('../config/encryption.js');
 module.exports = {
   // CHANGE ME TO AN ACTUAL FUNCTION
 
@@ -13,12 +13,10 @@ module.exports = {
   },
 
   register: function(req,res){
+    encryption.hash(req.body).then((encryptedUser)=>{
+
     knex('users')
-      .insert({
-        username: req.body.username,
-        email: req.body.email,
-        password:req.body.password
-      }, '*')
+      .insert(encryptedUser)
       .then(()=>{
         req.session.message = 'You have successfully registered';
         console.log('test')
@@ -30,6 +28,7 @@ module.exports = {
         req.session.message = 'You entered invalid user/password';
         res.redirect('/users/login');
       })
+    })
   },
 
   check: function(req, res){
@@ -37,11 +36,16 @@ module.exports = {
       .where('email', req.body.email)
       .then((result)=>{
         let user = result[0];
-        if(user.password === req.body.password){
-          req.session.user = user.id;
-          console.log("okay")
-          res.redirect('/trips');
-        }
+
+        encryption.check(user, req.body).then((isValid)=>{
+          if(isValid){
+            req.session.user = user.id;
+            res.redirect('/trips');
+          } else{
+            req.session.message = 'Sorry, no Chicago flights today';
+            res.redirect('/users/login')    
+          }
+        })
       })
       .catch((err)=>{
         console.log("error")
